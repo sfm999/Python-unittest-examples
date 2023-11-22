@@ -4,6 +4,12 @@ Super simple TestCase class. No dependencies on other files.
 
 import unittest
 
+def setUpModule():
+    print(f'Running setUpModule from {__name__}')
+
+def tearDownModule():
+    print(f'Running tearDownModule from {__name__}')
+
 class TestStringMethods(unittest.TestCase):
 
     def test_upper(self):

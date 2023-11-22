@@ -2,9 +2,12 @@ import unittest
 
 from code.calculations import Calculations
 
-class colour:
-    BOLD = '\033[1m'
-    END = '\033[0m'
+def setUpModule():
+    print(f'Running setUpModule from {__name__}')
+
+def tearDownModule():
+    print(f'Running tearDownModule from {__name__}')
+
 
 class TestCalculations(unittest.TestCase):
 
@@ -13,19 +16,19 @@ class TestCalculations(unittest.TestCase):
     @classmethod
     def setUpClass(self) -> None:
         self.calculations = Calculations(8, 2)
-        print("RUNNING setUpClass METHOD.")
-        print("You can use this method to perform actions only once and before any tests are run.")
-        print("Great for expensive processes or dependencies your tests have!")
-        print(f"If an {colour.BOLD}exception{colour.END} is thrown during setUpClass, then the tests are not run and neither is the tearDownClass method.")
-        print(f"If the {colour.BOLD}exception{colour.END} is a SkipTest exception, then the module will be reported as having been skipped instead of as an error")
-        print("This module should run 4 tests but when I raise the SkipTest exception, it will skip the rest of this module!\n")
-        raise unittest.SkipTest
+        print('RUNNING setUpClass METHOD.')
+        print('You can use this method to perform actions only once and before any tests are run.')
+        print('Great for expensive processes or dependencies your tests have!')
+        print('If an exception is thrown during setUpClass, then the tests are not run and neither is the tearDownClass method.')
+        print('If the exception is a SkipTest exception, then the module will be reported as having been skipped instead of as an error')
+        # print('This module should run 4 tests but when I raise the SkipTest exception, it will skip the rest of this module!\n')
+        # raise unittest.SkipTest
 
     @classmethod
     def tearDownClass(self) -> None:
-        print("\nRUNNING tearDownClass METHOD.")
-        print("You can use this method to destroy any resources that were created during test or setUpClass.")
-        print("Always clean up!")
+        print('\nRUNNING tearDownClass METHOD.')
+        print('You can use this method to destroy any resources that were created during test or setUpClass.')
+        print('Always clean up!')
 
     def test_sum(self) -> None:
         # We are passing in the value gained, what we expect,
